@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
+use App\Models\Setting;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
@@ -103,8 +104,8 @@ class MemberController extends Controller
      */
     public function destroy( $id)
     {
-        $kategori = Member::find($id);
-        $kategori->delete();
+        $member = Member::find($id);
+        $member->delete();
 
         return response(null, 204);
     }
@@ -116,9 +117,8 @@ class MemberController extends Controller
             $member = Member::find($id);
             $datamember[] = $member;
         }
-
-        // $datamember = $datamember->chunk(2);
-        // $setting    = Setting::first();
+        $datamember = $datamember->chunk(2);
+        $setting    = Setting::first();
 
         $no  = 1;
         $pdf = Pdf::loadView('member.cetak', compact('datamember', 'no', 'setting'));

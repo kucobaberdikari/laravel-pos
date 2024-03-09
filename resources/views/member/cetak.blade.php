@@ -40,13 +40,13 @@
             font-size: 12pt;
             font-family: Arial, Helvetica, sans-serif;
             font-weight: bold;
-            color: #fff !important;
+            /* color: #fff !important; */
         }
         .telepon {
             position: absolute;
             margin-top: 120pt;
             right: 16pt;
-            color: #fff;
+            /* color: #fff; */
         }
         .barcode {
             position: absolute;
@@ -54,7 +54,7 @@
             left: .860rem;
             border: 1px solid #fff;
             padding: .5px;
-            background: #fff;
+            /* background: #fff; */
         }
         .text-left {
             text-align: left;
@@ -73,17 +73,19 @@
             @foreach ($datamember as $key => $data)
                 <tr>
                     @foreach ($data as $item)
+
+                    {{-- @dd($item) --}}
                         <td class="text-center">
                             <div class="box">
-                                <img src="{{ public_path($setting->path_kartu_member) }}" alt="card" width="50%">
+                                <img src="{{ asset($setting->path_kartu_member) }}" alt="card" width="50%">
                                 <div class="logo">
                                     <p>{{ $setting->nama_perusahaan }}</p>
-                                    <img src="{{ public_path($setting->path_logo) }}" alt="logo">
+                                    <img src="{{ asset($setting->path_logo) }}" alt="logo">
                                 </div>
                                 <div class="nama">{{ $item->nama }}</div>
                                 <div class="telepon">{{ $item->telepon }}</div>
                                 <div class="barcode text-left">
-                                    <img src="data:image/png;base64, {{ DNS2D::getBarcodePNG("$item->kode_member", 'QRCODE') }}" alt="qrcode"
+                                    <img src="data:image/png;base64, {{ DNS1D::getBarcodePNG("$item->kode_member", 'C39+') }}" alt="qrcode"
                                         height="45"
                                         widht="45">
                                 </div>

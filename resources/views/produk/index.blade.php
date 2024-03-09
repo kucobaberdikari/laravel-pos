@@ -20,10 +20,10 @@
             <button class="btn btn-success btn-md" onclick="addForm('{{ route('produk.store') }}')">
                 <i class="fa fa-plus-circle mr-2"></i>Tambah Data
             </button>
-            <button class="btn btn-danger btn-md" onclick="deleteSelected('{{ route('produk.delete_selected') }}')">
+            <button type="button" class="btn btn-danger btn-md" onclick="deleteSelected('{{ route('produk.delete_selected') }}')">
                 <i class="fas fa-trash mr-2"></i>Hapus Data
             </button>
-            <button class="btn btn-info btn-md" onclick="cetakBarcode('{{ route('produk.cetak_barcode') }}')">
+            <button type="button" class="btn btn-info btn-md" onclick="cetakBarcode('{{ route('produk.cetak_barcode') }}')">
                 <i class="fas fa-barcode mr-2"></i>Cetak Barcode
             </button>
           </div>

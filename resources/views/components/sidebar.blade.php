@@ -46,7 +46,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/calendar.html" class="nav-link">
+              <a href="{{route ('supplier.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-truck"></i>
                 <p class="text-capitalize">
                   supplier
@@ -56,7 +56,7 @@
          
           <li class="nav-header">Transaksi</li>
             <li class="nav-item">
-              <a href="pages/calendar.html" class="nav-link">
+              <a href="{{route ('pengeluaran.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-money-bill-wave-alt"></i>
                 <p class="text-capitalize">
                   pengeluaran
@@ -64,7 +64,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/calendar.html" class="nav-link">
+              <a href="{{route('pembelian.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-file-download"></i>
                 <p class="text-capitalize">
                   pembelian

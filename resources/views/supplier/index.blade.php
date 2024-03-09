@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
-   Daftar Member
+   Daftar Supplier
 @endsection
 
 @section('breadcrumb')
 @parent
-<li class="breadcrumb-item active">Member</li>
+<li class="breadcrumb-item active">Supplier</li>
 @endsection
 
 @section('content')
@@ -16,24 +16,17 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header with-border">
-          <button class="btn btn-success btn-md" onclick="addForm('{{ route('member.store') }}')">
+          <button type="button" class="btn btn-success btn-md" onclick="addForm('{{ route('supplier.store') }}')">
             <i class="fa fa-plus-circle mr-2"></i>Tambah Data
           </button>
-          <button class="btn btn-info btn-md" onclick="cetakMember('{{ route('member.cetak_member') }}')">
-            <i class="fa fa-id-card mr-2"></i> Cetak Member
-           </button>
-
         </div>
         <div class="card-body table-responsive">
-          <form action="" method="POST" class="form-member">
+          <form action="" method="POST" class="form-supplier">
             @csrf
             <table class="table table-striped table-bordered">
               <thead>
-                <th width="5%">
-                  <input type="checkbox" name="select_all" id="select_all">
-                </th>
                 <th width="7%">No</th>
-                <th>Kode Member</th>
+                {{-- <th>Kode Supplier</th> --}}
                 <th>Nama</th>
                 <th>Telepon</th>
                 <th>Alamat</th>
@@ -48,7 +41,7 @@
   <!-- /.row (main row) -->
 </div>
 
-@includeIf('member.form')
+@includeIf('supplier.form')
 @endsection
 
 @push('script')
@@ -59,12 +52,12 @@
           processing:true,
           autoWidth:false,
           ajax: {
-            url: '{{route('member.data')}}', 
+            url: '{{route('supplier.data')}}', 
           },
           columns: [
-            {data: 'select_all', searchable: false, sortable: false}, 
+            // {data: 'select_all', searchable: false, sortable: false}, 
             {data: 'DT_RowIndex', searchable:false, sortable:false},
-            {data: 'kode_member'},
+            // {data: 'id_supplier'},
             {data: 'nama'},
             {data: 'telepon'},
             {data: 'alamat'},
@@ -86,14 +79,14 @@
             }
         });
 
-        $('[name=select_all]').on('click', function () {
-            $(':checkbox').prop('checked', this.checked);
-        });
+        // $('[name=select_all]').on('click', function () {
+        //     $(':checkbox').prop('checked', this.checked);
+        // });
       }); 
 
       function addForm(url){
         $('#modal-form').modal('show');
-        $('#modal-form .modal-title').text('Tambah Member');
+        $('#modal-form .modal-title').text('Tambah Supplier');
 
         $('#modal-form form')[0].reset();
         $('#modal-form form').attr('action', url);
@@ -104,7 +97,7 @@
 
       function editForm(url) {
         $('#modal-form').modal('show');
-        $('#modal-form .modal-title').text('Edit Member');
+        $('#modal-form .modal-title').text('Edit Supplier');
 
         $('#modal-form form')[0].reset();
         $('#modal-form form').attr('action', url);
@@ -139,16 +132,5 @@
         }
     }
 
-    function cetakMember(url) {
-        if ($('input:checked').length < 1) {
-          alert('Pilih data yang akan dicetak');
-          return;
-        } else {
-          $('.form-member')
-            .attr('target', '_blank')
-            .attr('action', url)
-            .submit();
-        }
-    }
   </script>
 @endpush
