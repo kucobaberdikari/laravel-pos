@@ -12,4 +12,12 @@ class Penjualan extends Model
     protected $table = 'penjualan';
     protected $primaryKey = 'id_penjualan';
     protected $guarded = [];
+
+    function member() {
+        return $this->hasOne(Member::class, 'id_member', 'id_member'); 
+    }
+
+    function user() {
+        return $this->hasOne(User::class, 'id', 'id_user');
+    }
 }

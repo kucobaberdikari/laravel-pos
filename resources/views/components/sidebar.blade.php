@@ -20,9 +20,9 @@
               </p>
             </a>
           </li> --}}
-          <li class="nav-header text-capitalzie">Master</li>
+          <li class="nav-sidebar text-capitalzie">Master</li>
             <li class="nav-item">
-              <a href="{{route('kategori.index')}}" class="nav-link">
+              <a href="{{route('kategori.index')}}" class="nav-link {{ Request::is('kategori*') ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-cube"></i>
                 <p class="text-capitalize">
                   Kategori
@@ -30,7 +30,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{route('produk.index')}}" class="nav-link">
+              <a href="{{route('produk.index')}}" class="nav-link {{ Request::is('produk*') ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-cubes"></i>
                 <p class="text-capitalize">
                   Produk
@@ -38,7 +38,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{route('member.index')}}" class="nav-link">
+              <a href="{{route('member.index')}}" class="nav-link {{ Request::is('member*') ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-id-card"></i>
                 <p class="text-capitalize">
                   member
@@ -46,7 +46,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{route ('supplier.index')}}" class="nav-link">
+              <a href="{{route ('supplier.index')}}" class="nav-link {{ Request::is('supplier*') ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-truck"></i>
                 <p class="text-capitalize">
                   supplier
@@ -56,7 +56,7 @@
          
           <li class="nav-header">Transaksi</li>
             <li class="nav-item">
-              <a href="{{route ('pengeluaran.index')}}" class="nav-link">
+              <a href="{{route ('pengeluaran.index')}}" class="nav-link {{ Request::is('pengeluaran*') ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-money-bill-wave-alt"></i>
                 <p class="text-capitalize">
                   pengeluaran
@@ -64,7 +64,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{route('pembelian.index')}}" class="nav-link">
+              <a href="{{route('pembelian.index')}}" class="nav-link {{ Request::is('pembelian*') ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-file-download"></i>
                 <p class="text-capitalize">
                   pembelian
@@ -72,7 +72,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/calendar.html" class="nav-link">
+              <a href="{{route('penjualan.index')}}" class="nav-link {{ Request::is('penjualan*') ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-file-upload"></i>
                 <p class="text-capitalize">
                   penjualan
@@ -80,25 +80,25 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/calendar.html" class="nav-link">
+              <a href="{{route('transaksi.index')}}" class="nav-link {{ Request::is('transaksi.index*') ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-cart-arrow-down"></i>
                 <p class="text-capitalize">
-                  Transaksi lama
+                  Transaksi Aktif
                 </p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/calendar.html" class="nav-link">
+              <a href="{{route('transaksi.baru')}}" class="nav-link {{ Request::is('transaksi.baru*') ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-cart-arrow-down"></i>
                 <p class="text-capitalize">
-                  Transaksi baru
+                  Transaksi Baru
                 </p>
               </a>
             </li>
           
           <li class="nav-header">Report</li>
             <li class="nav-item">
-              <a href="pages/calendar.html" class="nav-link">
+              <a href="pages/calendar.html" class="nav-link {{ Request::is('produk*') ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-file-pdf"></i>
                 <p class="text-capitalize">
                   laporan
@@ -108,7 +108,7 @@
 
           <li class="nav-header">System</li>
             <li class="nav-item">
-              <a href="pages/calendar.html" class="nav-link">
+              <a href="pages/calendar.html" class="nav-link {{ Request::is('produk*') ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-user"></i>
                 <p class="text-capitalize">
                   User
@@ -116,7 +116,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/calendar.html" class="nav-link">
+              <a href="pages/calendar.html" class="nav-link {{ Request::is('produk*') ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-cogs"></i>
                 <p class="text-capitalize">
                   Pengaturan
