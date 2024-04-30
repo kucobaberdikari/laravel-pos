@@ -49,6 +49,8 @@
     <script>
       let table, table1;
       $(function() {
+        $('body').addClass('sidebar-collapse');
+
         table = $('.table-pembelian').DataTable({
           processing:true,
           autoWidth:false,

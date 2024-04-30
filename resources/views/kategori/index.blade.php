@@ -42,6 +42,8 @@
     <script>
       let table;
       $(function() {
+        $('body').addClass('sidebar-collapse');
+
         table = $('.table').DataTable({
           processing:true,
           autoWidth:false,

@@ -98,7 +98,7 @@
           
           <li class="nav-header">Report</li>
             <li class="nav-item">
-              <a href="pages/calendar.html" class="nav-link {{ Request::is('produk*') ? 'active' : '' }} ">
+              <a href="{{route ('laporan.index')}}" class="nav-link {{ Request::is('laporan*') ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-file-pdf"></i>
                 <p class="text-capitalize">
                   laporan

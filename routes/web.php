@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PembelianDetailController;
@@ -93,6 +94,9 @@ Route::group(['middleware' =>    'auth'], function () {
     Route::get('/transaksi/nota-kecil', [PenjualanController::class, 'notaKecil'])->name('transaksi.nota_kecil');
     Route::get('/transaksi/nota-besar', [PenjualanController::class, 'notaBesar'])->name('transaksi.nota_besar');
 
-    Route::get('/laporan',[]);
+    Route::get('/laporan',[LaporanController::class, 'index'])->name('laporan.index');
+    Route::get('/laporan/refresh',[LaporanController::class, 'refresh'])->name('laporan.refresh');
+    Route::get('/laporan/data/{awal}/{akhir}', [LaporanController::class, 'data'])->name('laporan.data');
+    Route::get('/laporan/pdf/{tglawal}/{tglakhir}',[LaporanController::class, 'exportPDF'])->name('laporan.export_pdf');
 
 });
