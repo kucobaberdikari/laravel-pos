@@ -10,17 +10,7 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column nav-legacy" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- Add icons to the links using the .nav-icon class
-          with font-awesome or any other icon font library -->
-          {{-- <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-home"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
-          </li> --}}
-          <li class="nav-sidebar text-capitalzie pt-5">Master</li>
+          <li class="nav-header pt-5">Master</li>
             <li class="nav-item">
               <a href="{{route('kategori.index')}}" class="nav-link {{ Request::is('kategori*') ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-cube"></i>
