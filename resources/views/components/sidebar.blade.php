@@ -10,7 +10,7 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column nav-legacy" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-header pt-5">Master</li>
+          <li class="nav-header">Master</li>
             <li class="nav-item">
               <a href="{{route('kategori.index')}}" class="nav-link {{ Request::is('kategori*') ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-cube"></i>
