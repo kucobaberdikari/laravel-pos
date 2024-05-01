@@ -20,7 +20,7 @@
               </p>
             </a>
           </li> --}}
-          <li class="nav-sidebar text-capitalzie">Master</li>
+          <li class="nav-sidebar text-capitalzie pt-5">Master</li>
             <li class="nav-item">
               <a href="{{route('kategori.index')}}" class="nav-link {{ Request::is('kategori*') ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-cube"></i>
@@ -98,7 +98,7 @@
           
           <li class="nav-header">Report</li>
             <li class="nav-item">
-              <a href="pages/calendar.html" class="nav-link {{ Request::is('produk*') ? 'active' : '' }} ">
+              <a href="{{route ('laporan.index')}}" class="nav-link {{ Request::is('laporan*') ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-file-pdf"></i>
                 <p class="text-capitalize">
                   laporan

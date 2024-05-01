@@ -32,6 +32,8 @@
   <link rel="stylesheet" href="{{asset('AdminLTE-3.2.0/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   {{-- <link rel="stylesheet" href="{{asset('AdminLTE-3.2.0/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}"> --}}
 
+  @stack ('css')
+
   <style>
     .main-sidebar .nav-link:hover {
       background-color: #ffdf1b !important;

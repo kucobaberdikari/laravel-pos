@@ -62,8 +62,9 @@
 @push('script')
   <script>
     let table;
-
     $(function () {
+        $('body').addClass('sidebar-collapse');
+
         table = $('.table').DataTable({
             responsive: true,
             processing: true,
