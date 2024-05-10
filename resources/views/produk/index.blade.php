@@ -20,7 +20,7 @@
             <button class="btn btn-success btn-md" onclick="addForm('{{ route('produk.store') }}')">
                 <i class="fa fa-plus-circle mr-2"></i>Tambah Data
             </button>
-            <button type="button" class="btn btn-danger btn-md" onclick="deleteSelected('{{ route('produk.delete_selected') }}')">
+            <button type="button" class="btn btn-danger btn-md mx-2" onclick="deleteSelected('{{ route('produk.delete_selected') }}')">
                 <i class="fas fa-trash mr-2"></i>Hapus Data
             </button>
             <button type="button" class="btn btn-info btn-md" onclick="cetakBarcode('{{ route('produk.cetak_barcode') }}')">
@@ -31,7 +31,7 @@
         <div class="card-body table-responsive">
          <form action="" method="post" class="form-produk">
             @csrf
-            <table class="table table-striped table-bordered table-responsive">
+            <table class="table table-striped table-bordered">
               <thead>
                 <th width="5%">
                   <input type="checkbox" name="select_all" id="select_all">

@@ -175,6 +175,7 @@
             ],
             dom: 'Brt',
             bSort: false,
+            buttons: [],
             paginate: false
         })
         .on('draw.dt', function () {

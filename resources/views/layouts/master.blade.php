@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="{{asset('image/logo_tokoku.svg')}}" type="image/x-icon">
-  <title>Tokoku | @yield('title')</title>
+  {{-- <link rel="shortcut icon" href="{{asset('image/logo_tokoku.svg')}}" type="image/x-icon"> --}}
+  <title>{{$setting->nama_perusahaan}} | @yield('title')</title>
+  <link rel="icon" href="{{url('$setting->path_logo')}}" type="image/png">
   <meta name="csrf-token" content="{{csrf_token()}}">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -153,6 +154,13 @@
 <script src="{{asset('js/validator.min.js')}}"></script>
 <script src="{{asset('AdminLTE-3.2.0/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
 <script src="{{asset('AdminLTE-3.2.0/plugins/jquery-validation/additional-methods.min.js')}}"></script>
+
+<script>
+  function preview(selector, temporaryFile, width = 200)  {
+    $(selector).empty();
+    $(selector).append(`<img src="${window.URL.createObjectURL(temporaryFile)}" width="${width}">`);
+  }
+</script>
 @stack('script')
 </body>
 </html>
