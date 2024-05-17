@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  {{-- <link rel="shortcut icon" href="{{asset('image/logo_tokoku.svg')}}" type="image/x-icon"> --}}
-  <title>{{$setting->nama_perusahaan}} | @yield('title')</title>
-  <link rel="icon" href="{{url('$setting->path_logo')}}" type="image/png">
-  <meta name="csrf-token" content="{{csrf_token()}}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{ $setting->nama_perusahaan }} | @yield('title')</title>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+  <link rel="icon" href="{{ url($setting->path_logo) }}" type="image/png">
+
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -66,7 +69,7 @@
   @includeIf('components.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper mb-3">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -94,13 +97,6 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
-    </div>
-  </footer>
 
 </div>
 <!-- ./wrapper -->
@@ -118,7 +114,7 @@
 <!-- ChartJS -->
 <script src="{{asset('AdminLTE-3.2.0/plugins/chart.js/Chart.min.js')}}"></script>
 <!-- Sparkline -->
-<script src="{{asset('AdminLTE-3.2.0/plugins/sparklines/sparkline.js')}}"></script>
+{{-- <script src="{{asset('AdminLTE-3.2.0/plugins/sparklines/sparkline.js')}}"></script> --}}
 <!-- JQVMap -->
 <script src="{{asset('AdminLTE-3.2.0/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
 <script src="{{asset('AdminLTE-3.2.0/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
@@ -136,7 +132,7 @@
 <!-- AdminLTE App -->
 <script src="{{asset('AdminLTE-3.2.0/dist/js/adminlte.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{asset('AdminLTE-3.2.0/dist/js/pages/dashboard.js')}}"></script>
+{{-- <script src="{{asset('AdminLTE-3.2.0/dist/js/pages/dashboard2.js')}}"></script> --}}
 <!-- DataTables  & Plugins -->
 <script src="{{asset('AdminLTE-3.2.0/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('AdminLTE-3.2.0/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>

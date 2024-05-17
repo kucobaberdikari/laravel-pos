@@ -1,8 +1,8 @@
 <aside class="main-sidebar sidebar-light-teal elevation-4">
   <!-- Brand Logo -->
   <a href="/" class="brand-link">
-    <img src="{{asset('image/logo_tokoku.svg')}}" class="brand-image ">
-    <span class="brand-text font-weight-light">Tokoku</span>
+    <img src="{{ url($setting->path_logo) }}" class="brand-image mr-3">
+    <span class="brand-text text-lg font-weight-medium text-capitalize">{{ $setting->nama_perusahaan }}</span>
   </a>
 
   <!-- Sidebar -->
@@ -10,6 +10,7 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column nav-legacy" data-widget="treeview" role="menu" data-accordion="false">
+        @if (auth()->user()->level == 1)
           <li class="nav-header">Master</li>
             <li class="nav-item">
               <a href="{{route('kategori.index')}}" class="nav-link {{ Request::is('kategori*') ? 'active' : '' }} ">
@@ -113,7 +114,26 @@
                 </p>
               </a>
             </li>
+      @else
+      <li class="nav-item">
+        <a href="{{route('transaksi.index')}}" class="nav-link {{ Request::is('transaksi.index*') ? 'active' : '' }} ">
+          <i class="nav-icon fas fa-cart-arrow-down"></i>
+          <p class="text-capitalize">
+            Transaksi Aktif
+          </p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{{route('transaksi.baru')}}" class="nav-link {{ Request::is('transaksi.baru*') ? 'active' : '' }} ">
+          <i class="nav-icon fas fa-cart-arrow-down"></i>
+          <p class="text-capitalize">
+            Transaksi Baru
+          </p>
+        </a>
+      </li>
+      @endif
       </ul>
+      
     </nav>
     <!-- /.sidebar-menu -->
   </div>
