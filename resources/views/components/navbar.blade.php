@@ -11,7 +11,7 @@
     <!-- Notifications Dropdown Menu -->
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
-        <img src="{{url(auth()->user()->foto ?? '')}}" alt="User Avatar" class="img-size-28 img-profil img-circle">
+        <img src="{{url(auth()->user()->foto ?? '')}}" alt="User Avatar" class="img-size-28 img-profil img-circle"  onerror="this.onerror=null;this.src='image/avatar.jpg';">
       </a>
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <div class="dropdown-divider"></div>
