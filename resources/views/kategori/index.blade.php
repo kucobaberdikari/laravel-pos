@@ -21,7 +21,7 @@
           </button>
         </div>
         <div class="card-body table-responsive">
-          <table class="table table-striped table-bordered">
+          <table class="table-kategori table table-striped table-bordered">
             <thead>
               <th width="7%">No</th>
               <th>Kategori</th>
@@ -36,17 +36,19 @@
 </div>
 
 @includeIf('kategori.form')
+@includeIf('kategori.detail')
 @endsection
 
 @push('script')
     <script>
-      let table;
+      let table, table2;
       $(function() {
         $('body').addClass('sidebar-collapse');
 
-        table = $('.table').DataTable({
+        table = $('.table-kategori').DataTable({
           processing:true,
           autoWidth:false,
+          buttons: [],
           ajax: {
             url: '{{route('kategori.data')}}', 
           },
@@ -54,6 +56,20 @@
             {data: 'DT_RowIndex', searchable:false, sortable:false},
             {data: 'nama_kategori'},
             {data: 'action', searchable:false, sortable:false},
+          ]
+        });
+
+        table2 = $('.table-produk').DataTable({
+          processing: true,
+          bSort: false,
+          buttons: [],
+          dom: 'Brt',
+          columns: [
+              {data: 'DT_RowIndex', searchable: false, sortable: false},
+              {data: 'kode_produk'},
+              {data: 'nama_produk'},
+              {data: 'harga_jual'},
+              {data: 'stok'},
           ]
         });
 
@@ -100,6 +116,14 @@
                 alert('Tidak dapat menampilkan data');
                 return;
             });
+    }
+
+    function detailform(url) {
+      $('#modal-detail').modal('show');
+      $('#modal-detail .modal-title').text('Detail Kategori');
+
+      table2.ajax.url(url);
+      table2.ajax.reload();
     }
 
     function deleteData(url) {

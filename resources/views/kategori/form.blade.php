@@ -1,4 +1,3 @@
-
 <div class="modal fade" id="modal-form" tabindex="-1" aria-labelledby="modal-form" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">

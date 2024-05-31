@@ -52,6 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'level:1'], function () {
         Route::get('/kategori/data', [KategoriController::class, 'data'])->name('kategori.data');
+        Route::get('/kategori/detail/{id}', [KategoriController::class, 'detail'])->name('kategori.detail');
         Route::resource('/kategori', KategoriController::class);
 
         Route::get('/produk/data', [ProdukController::class, 'data'])->name('produk.data');

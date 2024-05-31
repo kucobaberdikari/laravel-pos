@@ -13,16 +13,6 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        {{-- <div class="card-header with-border">
-          <button type="button" class="btn btn-success btn-md" onclick="addForm()">
-            <i class="fa fa-plus-circle mr-2"></i>Transaksi Baru
-          </button>
-          @empty(!session('id_pembelian'))
-            <a href="{{route('pembelian_detail.index')}}" class="btn btn-info btn-md" >
-              <i class="fa fa-info-circle mr-2"></i>Transaksi Aktif
-            </a>
-          @endempty
-        </div> --}}
         <div class="card-body table-responsive">
             <table class="table table-striped table-bordered table-penjualan">
               <thead>
@@ -54,6 +44,7 @@
         table = $('.table-penjualan').DataTable({
           processing:true,
           autoWidth:false,
+          buttons: [],
           ajax: {
             url: '{{route('penjualan.data')}}', 
           },
@@ -73,6 +64,7 @@
         table1 = $('.table-detail').DataTable({
             processing: true,
             bSort: false,
+            buttons: [],
             dom: 'Brt',
             columns: [
                 {data: 'DT_RowIndex', searchable: false, sortable: false},

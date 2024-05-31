@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kategori;
+use App\Models\Produk;
 
 class KategoriController extends Controller
 {
@@ -26,6 +27,7 @@ class KategoriController extends Controller
         ->addColumn('action', function ($kategori) {
             return '
             <div class="btn-group">
+                <button onclick="detailform(`'. route('kategori.detail', $kategori->id_kategori) .'`)" class="btn btn-md btn-warning"><i class="fa fa-info-circle"></i></button>
                 <button onclick="editForm(`'. route('kategori.update', $kategori->id_kategori) .'`)" class="btn btn-md btn-info"><i class="fa fa-pencil"></i></button>
                 <button onclick="deleteData(`'. route('kategori.destroy', $kategori->id_kategori) .'`)" class="btn btn-md btn-danger"><i class="fa fa-trash"></i></button>
             </div>
@@ -95,5 +97,30 @@ class KategoriController extends Controller
         $kategori->delete();
 
         return response(null, 204);
+    }
+
+    public function detail($id){
+        // $produk = Produk::where('id_kategori', $id)->get();
+        $produk = Produk::where('id_kategori', $id)->get();
+        
+        // return response()->json(['data' => $produk]);
+        return datatables()
+        ->of($produk)
+        ->addIndexColumn()
+        ->addColumn('kode_produk', function ($produk) {
+            return '<span class="badge badge-success">'. $produk->kode_produk .'</span>';
+        })
+        ->addColumn('nama_produk', function ($produk) {
+            return $produk->nama_produk;
+        })
+        ->addColumn('harga_jual', function ($produk) {
+            return 'Rp. '. format_uang($produk->harga_jual);
+        })
+        ->addColumn('stok', function ($produk) {
+            return $produk->stok;
+        })
+        
+        ->rawColumns(['kode_produk'])
+        ->make(true);
     }
 }

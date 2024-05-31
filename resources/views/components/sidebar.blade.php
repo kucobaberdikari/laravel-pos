@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-light-teal elevation-4">
   <!-- Brand Logo -->
-  <a href="/" class="brand-link">
+  <a href="{{route('dashboard')}}" class="brand-link">
     <img src="{{ url($setting->path_logo) }}" class="brand-image mr-3">
     <span class="brand-text text-lg font-weight-medium text-capitalize">{{ $setting->nama_perusahaan }}</span>
   </a>

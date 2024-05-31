@@ -150,7 +150,7 @@
           processing: true,
           serverSide: true,
           autoWidth: false,
-          buttons: false,
+          buttons: [],
           ajax: {
               url: '{{ route('pembelian_detail.data', $id_pembelian) }}',
           },

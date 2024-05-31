@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-   Daftar Pembelian
+  Daftar Pembelian
 @endsection
 
 @section('breadcrumb')
@@ -48,12 +48,15 @@
 @push('script')
     <script>
       let table, table1;
+      
       $(function() {
         $('body').addClass('sidebar-collapse');
 
         table = $('.table-pembelian').DataTable({
-          processing:true,
-          autoWidth:false,
+          responsive: true,
+          processing: true,
+          serverSide: true,
+          autoWidth: false,
           ajax: {
             url: '{{route('pembelian.data')}}', 
           },
@@ -76,8 +79,8 @@
             dom: 'Brt',
             columns: [
                 {data: 'DT_RowIndex', searchable: false, sortable: false},
-                {data: 'kode_produk'},
                 {data: 'nama_produk'},
+                {data: 'kode_produk'},
                 {data: 'harga_beli'},
                 {data: 'jumlah'},
                 {data: 'subtotal'},
