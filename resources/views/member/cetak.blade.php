@@ -50,11 +50,12 @@
         }
         .barcode {
             position: absolute;
-            top: 105pt;
+            top: 90pt;
             left: .860rem;
-            border: 1px solid #fff;
+            /* border: 1px solid #fff; */
             padding: .5px;
-            background: #fff;
+            background:#1a1a1a ;
+            color: #fff;
         }
         .text-left {
             text-align: left;
@@ -75,7 +76,7 @@
                     @foreach ($data as $item)
                         <td class="text-center">
                             <div class="box">
-                                <img src="{{ public_path($setting->path_kartu_member) }}" alt="card" width="50%">
+                                <img src="{{ public_path($setting->path_kartu_member) }}" alt="card" width="100%">
                                 <div class="logo">
                                     <p>{{ $setting->nama_perusahaan }}</p>
                                     <img src="{{ public_path($setting->path_logo) }}" alt="logo">
@@ -83,9 +84,8 @@
                                 <div class="nama">{{ $item->nama }}</div>
                                 <div class="telepon">{{ $item->telepon }}</div>
                                 <div class="barcode text-left">
-                                    <img src="data:image/png;base64, {{ DNS2D::getBarcodePNG("$item->kode_member", 'QRCODE') }}" alt="qrcode"
-                                        height="45"
-                                        widht="45">
+                                    <img src="data:image/png;base64, {{ DNS2D::getBarcodePNG("$item->kode_member", 'QRCODE',3,3,array(255,255,255)) }}" alt="qrcode"
+                                       />
                                 </div>
                             </div>
                         </td>

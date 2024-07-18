@@ -23,7 +23,7 @@ class PembelianController extends Controller
    public function data()
    {
         $pembelian = Pembelian::orderBy('id_pembelian','desc')->get();
-        
+        // dd($pembelian)
         return datatables()
             ->of($pembelian)
             ->addIndexColumn()
@@ -40,7 +40,7 @@ class PembelianController extends Controller
                 return tanggal_indonesia($pembelian->created_at, false);
             })
             ->addColumn('supplier', function($pembelian){
-                return $pembelian->supplier->nama;
+                return $pembelian->supplier->nama ?? '';
             })
             ->editColumn('diskon', function ($pembelian) {
                 return $pembelian->diskon . '%';
