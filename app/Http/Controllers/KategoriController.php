@@ -100,10 +100,8 @@ class KategoriController extends Controller
     }
 
     public function detail($id){
-        // $produk = Produk::where('id_kategori', $id)->get();
         $produk = Produk::where('id_kategori', $id)->get();
         
-        // return response()->json(['data' => $produk]);
         return datatables()
         ->of($produk)
         ->addIndexColumn()

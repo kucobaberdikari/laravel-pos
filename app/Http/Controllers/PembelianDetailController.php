@@ -16,7 +16,7 @@ class PembelianDetailController extends Controller
     public function index()
     {
         $id_pembelian = session('id_pembelian');
-        $produk = Produk::orderBy('nama_produk')->get();
+        $produk = Produk::where('id_supplier', session('id_supplier'))->orderBy('nama_produk')->get();
         $supplier = Supplier::find(session('id_supplier'));
         $diskon = Pembelian::find($id_pembelian)->diskon ?? 0;
 

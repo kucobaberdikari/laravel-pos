@@ -23,11 +23,11 @@
         <div class="card-body table-responsive">
           <form action="" method="POST" class="form-supplier">
             @csrf
-            <table class="table table-striped table-bordered">
+            <table class="table-supplier table table-striped table-bordered">
               <thead>
                 <th width="7%">No</th>
                 {{-- <th>Kode Supplier</th> --}}
-                <th>Nama</th>
+                <th>Nama Supplier</th>
                 <th>Telepon</th>
                 <th>Alamat</th>
                 <th width="15%"><i class="fa fa-cog"></i></th>
@@ -42,15 +42,16 @@
 </div>
 
 @includeIf('supplier.form')
+@includeIf('supplier.detail')
 @endsection
 
 @push('script')
     <script>
-      let table;
+      let table, table2;
       $(function() {
         $('body').addClass('sidebar-collapse');
 
-        table = $('.table').DataTable({
+        table = $('.table-supplier').DataTable({
           processing:true,
           autoWidth:false,
           ajax: {
@@ -59,11 +60,23 @@
           columns: [
             // {data: 'select_all', searchable: false, sortable: false}, 
             {data: 'DT_RowIndex', searchable:false, sortable:false},
-            // {data: 'id_supplier'},
-            {data: 'nama'},
+            {data: 'nama_supplier'},
             {data: 'telepon'},
             {data: 'alamat'},
             {data: 'action', searchable:false, sortable:false},
+          ]
+        });
+
+        table2 = $('.table-produk').DataTable({
+          processing: true,
+          bSort: false,
+          buttons: [],
+          dom: 'Brt',
+          columns: [
+              {data: 'DT_RowIndex', searchable: false, sortable: false},
+              {data: 'foto_produk'},
+              {data: 'nama_produk'},
+              {data: 'kode_produk'},
           ]
         });
 
@@ -93,8 +106,16 @@
         $('#modal-form form')[0].reset();
         $('#modal-form form').attr('action', url);
         $('#modal-form [name=_method]').val('post');
-        $('#modal-form [name=nama]').focus();
+        $('#modal-form [name=nama_supplier]').focus();
 
+      }
+
+      function detailform(url) {
+        $('#modal-detail').modal('show');
+        $('#modal-detail .modal-title').text('Detail Produk');
+
+        table2.ajax.url(url);
+        table2.ajax.reload();
       }
 
       function editForm(url) {
@@ -104,11 +125,11 @@
         $('#modal-form form')[0].reset();
         $('#modal-form form').attr('action', url);
         $('#modal-form [name=_method]').val('put');
-        $('#modal-form [name=nama]').focus();
+        $('#modal-form [name=nama_supplier]').focus();
 
         $.get(url)
             .done((response) => {
-                $('#modal-form [name=nama]').val(response.nama);
+                $('#modal-form [name=nama_supplier]').val(response.nama_supplier);
                 $('#modal-form [name=telepon]').val(response.telepon);
                 $('#modal-form [name=alamat]').val(response.alamat);
             })

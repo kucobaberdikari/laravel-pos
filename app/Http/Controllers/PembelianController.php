@@ -15,7 +15,7 @@ class PembelianController extends Controller
      */
     public function index()
     {
-        $supplier = Supplier::orderBy('nama')->get();
+        $supplier = Supplier::orderBy('nama_supplier')->get();
         
         return view('pembelian.index', compact('supplier'));
     }
@@ -40,7 +40,7 @@ class PembelianController extends Controller
                 return tanggal_indonesia($pembelian->created_at, false);
             })
             ->addColumn('supplier', function($pembelian){
-                return $pembelian->supplier->nama;
+                return $pembelian->supplier->nama_supplier;
             })
             ->editColumn('diskon', function ($pembelian) {
                 return $pembelian->diskon . '%';

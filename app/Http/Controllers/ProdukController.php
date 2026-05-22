@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use App\Models\Produk;
+use App\Models\Supplier;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class ProdukController extends Controller
     public function index()
     {
         $kategori = Kategori::all()->pluck('nama_kategori','id_kategori');
-        return view('produk.index', compact('kategori'));
+        $supplier = Supplier::all()->pluck('nama_supplier','id_supplier');
+        return view('produk.index', compact('kategori', 'supplier'));
         
     }
 
@@ -33,6 +35,13 @@ class ProdukController extends Controller
                 return '
                     <input type="checkbox" name="id_produk[]" value="'. $produk->id_produk .'">
                 ';
+            })
+            ->addColumn('foto_produk', function ($produk) {
+                $url = $produk->foto_produk?
+                    asset('storage/'. $produk->foto_produk) :
+                    asset('img/produk.png');
+                    $produk->foto_produk = $url;
+                return '<img src="'. $url .'" class="img-thumbnail" width="100" height="100" alt="Foto Produk">';
             })
             ->addColumn('kode_produk', function ($produk) {
                 return '<span class="badge bg-success">'. $produk->kode_produk .'</span>';
@@ -55,7 +64,7 @@ class ProdukController extends Controller
                 </div>
                 ';
             })
-            ->rawColumns(['action', 'kode_produk', 'harga_beli', 'harga_jual', 'select_all'])
+            ->rawColumns(['action', 'foto_produk', 'kode_produk', 'harga_beli', 'harga_jual', 'select_all'])
             ->make(true);
     }
 

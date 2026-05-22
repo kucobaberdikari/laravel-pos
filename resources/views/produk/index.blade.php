@@ -36,7 +36,7 @@
                 <th width="5%">
                   <input type="checkbox" name="select_all" id="select_all">
                 </th>
-                <th width="5%">No</th>
+                <th>Image</th>
                 <th>Kode Produk</th>
                 <th>Nama Produk</th>
                 <th>Kategori</th>
@@ -45,6 +45,7 @@
                 <th>Harga Jual</th>
                 <th>Diskon</th>
                 <th>Stok</th>
+                {{-- <th>Supplier</th> --}}
                 <th width="8%"><i class="fa fa-cog"></i></th>
               </thead>
             </table>
@@ -75,7 +76,8 @@
             },
             columns: [
                 {data: 'select_all', searchable: false, sortable: false},
-                {data: 'DT_RowIndex', searchable: false, sortable: false},
+                // {data: 'DT_RowIndex', searchable: false, sortable: false},
+                {data: 'foto_produk',orderable: false, searchable: false},
                 {data: 'kode_produk'},
                 {data: 'nama_produk'},
                 {data: 'nama_kategori'},
@@ -84,6 +86,7 @@
                 {data: 'harga_jual'},
                 {data: 'diskon'},
                 {data: 'stok'},
+                // {data: 'supplier'},
                 {data: 'action', searchable: false, sortable: false},
             ]
         });
@@ -135,6 +138,8 @@
                 $('#modal-form [name=harga_jual]').val(response.harga_jual);
                 $('#modal-form [name=diskon]').val(response.diskon);
                 $('#modal-form [name=stok]').val(response.stok);
+                $('#modal-form [name=id_supplier]').val(response.id_supplier);
+                $('#modal-form [name=foto_produk]').val(response.foto_produk);
             })
             .fail((errors) => {
                 alert('Tidak dapat menyimpan data');

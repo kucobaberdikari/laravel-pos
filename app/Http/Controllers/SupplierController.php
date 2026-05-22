@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produk;
 use Illuminate\Http\Request;
 use App\Models\Supplier;
 
@@ -21,6 +22,7 @@ class SupplierController extends Controller
             ->addColumn('action', function ($supplier) {
                 return '
                 <div class="btn-group">
+                    <button type="button" onclick="detailform(`'. route('supplier.detail', $supplier->id_supplier) .'`)" class="btn btn-md btn-warning"><i class="fa fa-info-circle"></i></button>
                     <button type="button" onclick="editForm(`'. route('supplier.update', $supplier->id_supplier) .'`)" class="btn btn-md btn-info btn-flat"><i class="fa fa-pencil"></i></button>
                     <button type="button" onclick="deleteData(`'. route('supplier.destroy', $supplier->id_supplier) .'`)" class="btn btn-md btn-danger btn-flat"><i class="fa fa-trash"></i></button>
                 </div>
@@ -37,7 +39,7 @@ class SupplierController extends Controller
 
         $supplier = new Supplier();
         // $supplier->kode_supplier = tambah_nol_didepan($kode_supplier, 5);
-        $supplier->nama = $request->nama;
+        $supplier->nama_supplier = $request->nama_supplier;
         $supplier->telepon = $request->telepon;
         $supplier->alamat = $request->alamat;
         $supplier->save();
@@ -65,5 +67,29 @@ class SupplierController extends Controller
         $supplier->delete();
 
         return response(null, 204);
+    }
+
+    public function detail($id)
+    {
+        $produk = Produk::where('id_supplier', $id)->get(); 
+
+        return datatables()
+            ->of($produk)
+            ->addIndexColumn()
+            ->addColumn('foto_produk', function ($produk) {
+                 $url = $produk->foto_produk?
+                    asset('storage/'. $produk->foto_produk) :
+                    asset('img/produk.png');
+                    $produk->foto_produk = $url;
+                return '<img src="'. $url .'" class="img-thumbnail" width="100" height="100" alt="Foto Produk">';
+            })
+            ->addColumn('nama_produk', function ($produk) {
+                return '<span class="label label-success">'. $produk->nama_produk .'</span>';
+            })
+            ->addColumn('kode_produk', function ($produk) {
+                return '<span class="label label-success">'. $produk->kode_produk .'</span>';
+            })
+            ->rawColumns(['foto_produk', 'nama_produk', 'kode_produk'])
+            ->make(true);
     }
 }

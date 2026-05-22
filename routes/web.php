@@ -66,6 +66,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('/supplier/data', [SupplierController::class, 'data'])->name('supplier.data');
         Route::resource('/supplier', SupplierController::class);
+        Route::get('/supplier/detail/{id}', [SupplierController::class, 'detail'])->name('supplier.detail');
 
         Route::get('/pengeluaran/data', [PengeluaranController::class, 'data'])->name('pengeluaran.data');
         Route::resource('/pengeluaran', PengeluaranController::class);

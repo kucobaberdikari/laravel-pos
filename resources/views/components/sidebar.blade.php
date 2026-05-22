@@ -99,7 +99,7 @@
 
           <li class="nav-header">System</li>
             <li class="nav-item">
-              <a href="{{route('user.index')}}" class="nav-link {{ Request::is('produk*') ? 'active' : '' }} ">
+              <a href="{{route('user.index')}}" class="nav-link {{ Request::is('user*') ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-user"></i>
                 <p class="text-capitalize">
                   User
@@ -107,7 +107,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{route('setting.index')}}" class="nav-link {{ Request::is('produk*') ? 'active' : '' }} ">
+              <a href="{{route('setting.index')}}" class="nav-link {{ Request::is('setting*') ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-cogs"></i>
                 <p class="text-capitalize">
                   Pengaturan

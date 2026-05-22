@@ -73,6 +73,27 @@
               <span class="help-block with-errors text-danger text-xs"></span>
             </div>
           </div>
+          {{-- supplier --}}
+          <div class="form-group row">
+            <label for="id_supplier" class="col-md-3 col-offset-1 control-label">Supplier</label>
+            <div class="col-md-9">
+              <select name="id_supplier" id="id_supplier" class="form-control" required>
+                <option value="">Pilih Supplier</option>
+                @foreach ($supplier as $key=>$item)
+                  <option value="{{$key}}">{{$item}}</option>
+                @endforeach
+              </select>
+              <span class="help-block with-errors text-danger text-xs"></span>
+            </div>
+          </div>
+          {{-- foto produk --}}
+          <div class="form-group row">
+            <label for="foto_produk" class="col-md-3 col-offset-1 control-label">Foto Produk</label>
+            <div class="col-md-9">
+              <input type="file"  class="form-control" name="foto_produk" id="foto_produk">
+              <span class="help-block with-errors text-danger text-xs"></span>
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
